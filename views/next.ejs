@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>TuRecarga - Tu sitio de recargas por excelencia!</title>
+
+  <!-- Mobile Specific Metas
+  ================================================== -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Tu Sitio De Recargas Internacionales Por Excelencia">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="author" content="TuRecarga">
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.png" />
+  
+  <!-- ** Plugins Needed for the Project ** -->
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="/plugins/bootstrap/bootstrap.min.css">
+  <!-- slick slider -->
+  <link rel="stylesheet" href="/plugins/slick/slick.css">
+  <!-- themefy-icon -->
+  <link rel="stylesheet" href="/plugins/themify-icons/themify-icons.css">
+
+  <!-- Main Stylesheet -->
+  <link href="/css/style.css" rel="stylesheet">
+
+</head>
+<body>
+  
+<header class="navigation fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <a class="navbar-brand font-tertiary h3" href="/"><img src="/images/logo.png" alt="Myself" id="logo"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
+      aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation"  id="icon-next">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse text-center" id="navigation">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/recargar">Recargar</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<!--Modal-->
+<div class="modal" tabindex="-1" role="dialog" id="modal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Error</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>¡El operador seleccionado, no coincide con el numero ingresado!</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Reintentar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Modal-->
+
+<section class="hero-area-next bg-primary">
+  <div class="container text-center" style="width: 60%;">
+    <div class="titulo-section">
+      <h2 class="text-white font-tertiary" id="title-datos">Datos</h2>
+    </div>
+    <div class="card border-effect" style="width: 45rem;" id="card-next">
+      <div class="card-body" id="sumary">
+        <h3 class="card-title" id="pais" style="font-size: 45px;"></h3>
+        <h4 class="card-subtitle mb-2 text-muted" id="countryIso">Pais</h4>
+        <p class="card-text" id="number" style="font-size: 30px; color:#41228e; font-family:Verdana, Geneva, Tahoma, sans-serif;"></p>
+      </div>
+    </div>
+    <div id="seleccion-operador">
+      <div class="operadores-titulo">
+        <div class="titulo-operadores">
+          <h3 class="text-white font-tertiary" id="subtitle-operador">Seleccionar Operador</h3>
+        </div>
+      </div>  
+      <div class="card border-effect style="width: 40rem" id="card-operadores">
+        <div class="card-body">
+          <select class="selectpicker countrypicker" id="info" data-flag="true" style="height: 50px; width: 350px;">
+            <% operadores.forEach(function(opcion) { %>
+                  <option value="" providerCode="<%=opcion.ProviderCode%>"><%= opcion.Name %></option>
+            <% }); %>s
+          </select>
+          <div>
+            <br>
+            <button class="btn btn-verify" onclick="updateOperatorInfo();">Siguiente</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="p-4" id="section-products">
+      <div class="container" id="products">
+      </div>
+  </div>
+</section>
+
+<div class="" id="products"></div>
+
+<!-- footer -->
+<footer class="bg-dark">
+  <div class="section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <h5 class="text-light">Correo Electrónico</h5>
+          <p class="text-white paragraph-lg font-secondary">services@turecarga.com</p>
+        </div>
+        <div class="col-md-4">
+          <h5 class="text-light">Teléfono</h5>
+          <p class="text-white paragraph-lg font-secondary">+34 154 557 478</p>
+        </div>
+        <div class="col-md-4">
+          <h5 class="text-light">Direccion</h5>
+          <p class="text-white paragraph-lg font-secondary">125/A, Area Comercial, España</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="border-top text-center border-dark py-5">
+    <p class="mb-0 text-light">Derechos de autor &copy;<script>
+        var CurrentYear = new Date().getFullYear()
+        document.write(CurrentYear)
+      </script> Desarrollado &amp; hecho con &hearts; por: <a class="text-white-50" href="/">TuRecarga</a></p>
+  </div>
+</footer>
+<!-- /footer -->
+
+<!-- jQuery -->
+<script src="/plugins/jQuery/jquery.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="/plugins/bootstrap/bootstrap.min.js"></script>
+<!-- slick slider -->
+<script src="/plugins/slick/slick.min.js"></script>
+<!-- filter -->
+<script src="/plugins/shuffle/shuffle.min.js"></script>
+
+<!-- Main Script -->
+<script src="/js/script.js"></script>
+<script src="/js/nextLocal.js"></script>
+<script src="/js/distributorRefGenerator.js"></script>
+</body>
+</html>

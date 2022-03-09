@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Basic Page Needs
+  ================================================== -->
+  <meta charset="utf-8">
+  <title>TuRecarga - Tu sitio de recargas por excelencia!</title>
+
+  <!-- Mobile Specific Metas
+  ================================================== -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Tu Sitio De Recargas Internacionales Por Excelencia">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="author" content="TuRecarga">
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="../images/favicon.png" />
+  
+  <!-- ** Plugins Needed for the Project ** -->
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="../plugins/bootstrap/bootstrap.min.css">
+  <!-- slick slider -->
+  <link rel="stylesheet" href="../plugins/slick/slick.css">
+  <!-- themefy-icon -->
+  <link rel="stylesheet" href="../plugins/themify-icons/themify-icons.css">
+
+  <!-- Main Stylesheet -->
+  <link href="../css/style.css" rel="stylesheet">
+
+</head>
+<body>
+  
+<header class="navigation fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <a class="navbar-brand font-tertiary h3" href="/"><img src="../images/logo.png" alt="Myself" id="logo"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
+      aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse text-center" id="navigation">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../recargar">Recargar</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<!-- hero area -->
+<section class="hero-area bg-primary" id="parallax-successful">
+    <div class="container"  id="c-payment-done">
+        <div class="title-success">
+            <h3 class="text-white font-tertiary t-principal text-center">¡Recarga Realizada Exitosamente!</h3>
+        </div>
+        <div class="content-success">
+            <div class="card">
+                <div class="card-body">
+                    <div class="title-successs">
+                        <h4 class="text-center">Sumario</h4>
+                    </div>
+                    <div class="content-successs ml-4">
+                        <div class="ref-transfer my-4 successful">
+                            <h4><strong>Transacción #:</strong> <%= data.TransferRecord.TransferId.TransferRef %></h4>
+                        </div>
+                        <div class="receive-number my-4 successful" id="number">
+                        </div>
+                        <div class="receive-value my-4 successful">
+                          <h4><strong>Se ha recibido una recarga de:</strong> <%= data.TransferRecord.Price.ReceiveValue %> <%= data.TransferRecord.Price.ReceiveCurrencyIso %> </h4>
+                        </div>
+                        <div class="send-value my-4 successful">
+                          <h4><strong>Total Pagado:</strong> <%= data.TransferRecord.Price.SendValue + 1%> <%= data.TransferRecord.Price.SendCurrencyIso %> </h4>
+                        </div>
+                        <div class="status-transfer successful">
+                          <h4><strong>Estado de la recarga:</strong> Completada</h4>
+                        </div>
+                    </div>
+                    <div class="another-pop-up mt-4 text-center">
+                      <form method="GET" action="../recargar">  
+                        <input  class="btn btn-verify" type="submit" value="Realizar Nueva Recarga" id="another-top-up">  
+                      </form> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /hero area -->
+
+
+<!-- footer -->
+<footer class="bg-dark">
+  <div class="section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <h5 class="text-light">Correo Electrónico</h5>
+          <p class="text-white paragraph-lg font-secondary">services@turecarga.com</p>
+        </div>
+        <div class="col-md-4">
+          <h5 class="text-light">Teléfono</h5>
+          <p class="text-white paragraph-lg font-secondary">+34 154 557 478</p>
+        </div>
+        <div class="col-md-4">
+          <h5 class="text-light">Direccion</h5>
+          <p class="text-white paragraph-lg font-secondary">125/A, Area Comercial, España</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="border-top text-center border-dark py-5">
+    <p class="mb-0 text-light">Derechos de autor &copy;<script>
+        var CurrentYear = new Date().getFullYear()
+        document.write(CurrentYear)
+      </script> Desarrollado &amp; hecho con &hearts; por: <a class="text-white-50" href="/">TuRecarga</a></p>
+  </div>
+</footer>
+<!-- /footer -->
+
+<!-- jQuery -->
+<script src="../plugins/jQuery/jquery.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="../plugins/bootstrap/bootstrap.min.js"></script>
+<!-- slick slider -->
+<script src="../plugins/slick/slick.min.js"></script>
+<!-- filter -->
+<script src="../plugins/shuffle/shuffle.min.js"></script>
+
+<!-- Main Script -->
+<script src="../js/script.js"></script>
+<script src="../js/addNumber.js"></script>
+
+</body>
+</html>

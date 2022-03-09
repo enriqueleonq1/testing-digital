@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>TuRecarga - Tu sitio de recargas por excelencia!</title>
+
+  <!-- Mobile Specific Metas
+  ================================================== -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Tu Sitio De Recargas Internacionales Por Excelencia">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="author" content="TuRecarga">
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.png" />
+  
+  
+  <!-- ** Plugins Needed for the Project ** -->
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="/plugins/bootstrap/bootstrap.min.css">
+  <!-- slick slider -->
+  <link rel="stylesheet" href="/plugins/slick/slick.css">
+  <!-- themefy-icon -->
+  <link rel="stylesheet" href="/plugins/themify-icons/themify-icons.css">
+  <!-- Main Stylesheet -->
+  <link href="/css/style.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/fstdropdown.css">
+
+</head>
+<body>
+  
+
+<header class="navigation fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <a class="navbar-brand font-tertiary h3" href="/"><img src="/images/logo.png" alt="Myself" id="logo"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
+      aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse text-center" id="navigation">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="recargar">Recargar</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<!--Modal-->
+<div class="modal" tabindex="-1" role="dialog" id="modal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Error</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>¡Debe ingresar un número telefonico valido!</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Reintentar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Modal-->
+
+<section class="hero-area-index bg-primary">
+    <div class="container text-center agregar" style="width: 50%;">
+        <h1 class="text-white font-tertiary" id="recargar-title">Recargar</h1>
+        <div class="white-color border-effect" id="recarga-send">
+          <div id="first-subtitle">
+            <h4 class="text-primary font-tertiary pt-4"><b>¿A quién te gustaria recargar?<b></h4>
+          </div>
+          <div class="section-country">
+            <div class="titulo-recarga">
+              <br>
+              <h4 class="text-primary font-tertiary pt-2"><b>País<b></h4>
+            </div>
+            
+           
+            <div class="countries d-flex justify-content-center">
+                <select class="fstdropdown-select" id="countries" style="width: 50%;" tabindex="-1" aria-hidden="false" onchange="saveCountryInformation();">
+                  <% opciones.forEach(function(opcion) { %>
+                    <% if(opcion.InternationalDialingInformation.length < 1){ %>
+                      <option value="<%= opcion.CountryIso %>" prefix=""><%= opcion.CountryName %></option>
+                    <%}else{ %>
+
+                      <% if( opcion.CountryIso !== 'ES') { %>
+                        <option value="<%= opcion.CountryIso %>" prefix="<%=opcion.InternationalDialingInformation[0].Prefix %>"><%= opcion.CountryName %></option>
+                      <%}else{%>   
+                        <option value="<%= opcion.CountryIso %>" prefix="<%=opcion.InternationalDialingInformation[0].Prefix %>">España</option>
+                      <% } %> 
+
+                    <% } %>       
+                  <% }); %>
+                </select>
+            </div>
+     
+
+          </div>
+            <br>
+            <div class="numero-destinatario">
+
+                <div class="titulo-destinatario" id="titulo-telefono">
+                    <h4 class="text-primary font-tertiary pt-3"><b>Ingrese el número de teléfono del destinatario<b></h4>
+                </div>
+                <div id="verificar">
+                  <div class="form-group d-flex justify-content-center">
+                      <input type="text" class="form-control" id="numero" placeholder="Ingrese el número de teléfono" onkeypress="return check(event)" style="width: 280px; height: 50px;" required>
+                  </div>
+                    <button onclick="verificar()" class="btn btn-verify">Verificar Número</button>  
+                </div>
+                <br><br><br>
+            </div>   
+    </div>
+</section>
+
+<!-- footer -->
+<footer class="bg-dark">
+  <div class="section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <h5 class="text-light">Correo Electrónico</h5>
+          <p class="text-white paragraph-lg font-secondary">services@turecarga.com</p>
+        </div>
+        <div class="col-md-4">
+          <h5 class="text-light">Teléfono</h5>
+          <p class="text-white paragraph-lg font-secondary">+34 154 557 478</p>
+        </div>
+        <div class="col-md-4">
+          <h5 class="text-light">Direccion</h5>
+          <p class="text-white paragraph-lg font-secondary">125/A, Area Comercial, España</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="border-top text-center border-dark py-5">
+    <p class="mb-0 text-light">Derechos de autor &copy;<script>
+        var CurrentYear = new Date().getFullYear()
+        document.write(CurrentYear)
+      </script> Desarrollado &amp; hecho con &hearts; por: <a class="text-white-50" href="/">TuRecarga</a></p>
+  </div>
+</footer>
+<!-- /footer -->
+
+<!-- jQuery -->
+<script src="plugins/jQuery/jquery.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="plugins/bootstrap/bootstrap.min.js"></script>
+<!-- slick slider -->
+<script src="plugins/slick/slick.min.js"></script>
+<!-- filter -->
+<script src="plugins/shuffle/shuffle.min.js"></script>
+
+<!-- Main Script -->
+<script>
+  if( localStorage.length === 0 ){
+        localStorage.setItem("seleccion", JSON.stringify({"country":"Andorra","countryIso":"AD","prefix":"376"}))
+    }else{
+        localStorage.clear()
+        localStorage.setItem("seleccion", JSON.stringify({"country":"Andorra","countryIso":"AD","prefix":"376"}))
+    }
+</script>
+
+<script src="js/script.js"></script>
+<script src="js/loadCountries.js"></script>
+<script src="js/testFetch.js"></script>
+<script src="js/fstdropdown.js"></script>
+
+</body>
+</html>
